@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
   String text;
-  Function _onPressed;
+  Function onPressed;
+  bool showProgress;
   
-  AppButton(this.text,this._onPressed);
+  AppButton(this.text,{this.onPressed,this.showProgress=false});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,8 @@ class AppButton extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.blue, borderRadius: BorderRadius.circular(20)),
       child: FlatButton(
-        onPressed: _onPressed,
-        child: Text(
+        onPressed: onPressed,
+        child: showProgress ? Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.white),),) : Text(
           text,
           style: TextStyle(color: Colors.white, fontSize: 25),
         ),

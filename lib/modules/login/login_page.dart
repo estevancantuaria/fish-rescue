@@ -1,6 +1,8 @@
 import 'package:fish_rescue_app/models/usuario.dart';
 import 'package:fish_rescue_app/modules/home/home_page.dart';
 import 'package:fish_rescue_app/modules/login/login_api.dart';
+import 'package:fish_rescue_app/utils/alert.dart';
+import 'package:fish_rescue_app/utils/api_response.dart';
 import 'package:fish_rescue_app/widgets/app_button.dart';
 import 'package:fish_rescue_app/widgets/app_text.dart';
 import 'package:fish_rescue_app/widgets/clip-widget.dart';
@@ -16,11 +18,13 @@ class _LoginPageState extends State<LoginPage> {
 
   final clipTop = ClipTopOne();
 
-  var _tLogin = TextEditingController();
+  final _tLogin = TextEditingController();
 
-  var _tSenha = TextEditingController();
+  final _tSenha = TextEditingController();
 
-  var _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+
+  bool _showProgress = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _body(BuildContext context) {
+
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
@@ -81,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.blue, fontSize: 15),
                 ),
               ),
-              AppButton("Login", _onClickLogin),
+              AppButton("Login", onPressed: _onClickLogin,showProgress: _showProgress,),
               SizedBox(
                 height: 203,
               ),
@@ -102,14 +107,23 @@ class _LoginPageState extends State<LoginPage> {
     String senha = _tSenha.text;
 
     print("Login: $login, Senha: $senha");
-    Usuario user = await LoginApi.login(login, senha);
-    if(user!=null){
+
+    setState(() {
+      _showProgress = true;
+    });
+
+    ApiResponse response = await LoginApi.login(login, senha);
+    if(response.ok){
+      Usuario user = response.result;
       print(">>>$user");
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomePage()));
     }else{
-      print('login incorreto');
+      alert(context,response.msg);
     }
+    setState(() {
+      _showProgress = false;
+    });
   }
 
   String _validateEmail(String text) {
