@@ -5,9 +5,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Início'),
-        centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+              child: AppBar(
+          title: Text('Menu Principal'),
+          centerTitle: true,
+        ),
       ),
       drawer: DrawerList(),
       body: _body(),
@@ -16,111 +19,84 @@ class HomePage extends StatelessWidget {
 
   _body() {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(16),
       child: Container(
-        padding: EdgeInsets.only(top:8),
+        padding: EdgeInsets.only(top: 30),
         child: ListView(
           children: [
-            Container(
-              height: 237,
-              child: Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Stack(
-                  children: [
-                    Image.network(
-                      "https://www.ofitexto.com.br/wp-content/uploads/2018/06/Vertedouro-da-UHE-de-Tucuru%C3%AD-Foto-cortesia-Eletronorte.jpg",
-                      fit: BoxFit.fill,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
+            Card(
+              child: Stack(
+                children: [
+                  Image.network(
+                      "https://www.epagri.sc.gov.br/wp-content/uploads/2019/08/piscicultura-sc.jpg"),
+                  Center(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 140),
                       child: Container(
-                        margin: EdgeInsets.all(12),
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.only(left: 20, right: 23),
                         decoration: BoxDecoration(
-                          color: Colors.black45,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
+                            color: Colors.black54,
+                            borderRadius: BorderRadius.circular(12)),
                         child: Text(
-                      "Iniciar Novo Resgate",
-                      style: TextStyle(fontSize: 23, color: Colors.white),
-                    )),
-                    )
-                  ],
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.all(20),
+                          "Iniciar Resgate",
+                          style: TextStyle(fontSize: 25, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
-            Container(
-              height: 237,
-              child: Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Stack(
-                  children: [
-                    Image.network(
-                      "https://www.ofitexto.com.br/wp-content/uploads/2018/06/Vertedouro-da-UHE-de-Tucuru%C3%AD-Foto-cortesia-Eletronorte.jpg",
-                      fit: BoxFit.fill,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
+            SizedBox(
+              height: 28,
+            ),
+            Card(
+              child: Stack(
+                children: [
+                  Image.network(
+                      "https://www.ofitexto.com.br/wp-content/uploads/2018/06/Vertedouro-da-UHE-de-Tucuru%C3%AD-Foto-cortesia-Eletronorte.jpg"),
+                  Center(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 163),
                       child: Container(
-                        margin: EdgeInsets.all(12),
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.only(left: 20, right: 23),
                         decoration: BoxDecoration(
-                          color: Colors.black45,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                            color: Colors.black54,
+                            borderRadius: BorderRadius.circular(12)),
                         child: Text(
-                      "Lista de Usinas",
-                      style: TextStyle(fontSize: 23, color: Colors.white),
-                    )),
-                    )
-                  ],
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.all(20),
+                          "Lista de Usinas",
+                          style: TextStyle(fontSize: 25, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
-            Container(
-              height: 237,
-              child: Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Stack(
-                  children: [
-                    Image.network(
-                      "https://www.ofitexto.com.br/wp-content/uploads/2018/06/Vertedouro-da-UHE-de-Tucuru%C3%AD-Foto-cortesia-Eletronorte.jpg",
-                      fit: BoxFit.fill,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
+            SizedBox(
+              height: 28,
+            ),
+            Card(
+              child: Stack(
+                children: [
+                  Image.network(
+                      "https://i0.wp.com/files.agro20.com.br/uploads/2020/09/Peixes-de-%C3%A1gua-salgada-5.jpg?resize=1024%2C576&ssl=1"),
+                  Center(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 158),
                       child: Container(
-                        margin: EdgeInsets.all(12),
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.only(left: 20, right: 23),
                         decoration: BoxDecoration(
-                          color: Colors.black45,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                            color: Colors.black54,
+                            borderRadius: BorderRadius.circular(12)),
                         child: Text(
-                      "Lista de Espécies",
-                      style: TextStyle(fontSize: 23, color: Colors.white),
-                    )),
-                    )
-                  ],
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.all(20),
+                          "Lista de Espécies",
+                          style: TextStyle(fontSize: 25, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
           ],
