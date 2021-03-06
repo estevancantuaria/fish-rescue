@@ -11,14 +11,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: Size.fromHeight(65),
         child: AppBar(
-          title: Text('Menu inicial'),
+          title: Container(
+              padding: EdgeInsets.only(top: 2), child: Text("Menu")),
           centerTitle: true,
         ),
       ),
-      drawer: Container(padding: EdgeInsets.only(top:10),child: DrawerList()),
+      drawer: DrawerList(),
       body: _body(),
     );
   }
@@ -27,7 +29,12 @@ class _HomePageState extends State<HomePage> {
     return PageView(
       children: [
         Container(
-          margin: EdgeInsets.only(left: 14, right: 14, top: 45, bottom: 35),
+          margin: EdgeInsets.only(
+            top: 85,
+            bottom:14,
+            right: 15,
+            left: 15
+          ),
           child: Stack(children: <Widget>[
             Positioned.fill(
               child: ClipRRect(
@@ -41,10 +48,11 @@ class _HomePageState extends State<HomePage> {
             Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  padding: EdgeInsets.only(left: 30, top: 23, bottom: 30),
+                  padding:
+                      EdgeInsets.only(left: 30, right: 30, top: 46, bottom: 46),
                   decoration: BoxDecoration(
                       color: Colors.black54,
-                      borderRadius: BorderRadius.circular(5)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
@@ -53,15 +61,20 @@ class _HomePageState extends State<HomePage> {
                               builder: (context) => StepperDemo()));
                     },
                     child: Text(
-                      "Iniciar um novo resgate",
-                      style: TextStyle(fontSize: 31, color: Colors.white),
+                      "Iniciar um Novo Resgate",
+                      style: TextStyle(fontSize: 27, color: Colors.white),
                     ),
                   ),
                 )),
           ]),
         ),
-        Container(
-          margin: EdgeInsets.only(left: 14, right: 14, top: 45, bottom: 35),
+          Container(
+          margin: EdgeInsets.only(
+            top: 82,
+            bottom:14,
+            right: 15,
+            left: 15
+          ),
           child: Stack(children: <Widget>[
             Positioned.fill(
               child: ClipRRect(
@@ -75,10 +88,11 @@ class _HomePageState extends State<HomePage> {
             Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  padding: EdgeInsets.only(left: 30, top: 23, bottom: 30),
+                  padding:
+                      EdgeInsets.only(left: 30, right: 30, top: 46, bottom: 46),
                   decoration: BoxDecoration(
                       color: Colors.black54,
-                      borderRadius: BorderRadius.circular(5)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
@@ -87,8 +101,8 @@ class _HomePageState extends State<HomePage> {
                               builder: (context) => StepperDemo()));
                     },
                     child: Text(
-                      "Lista de usínas cadastradas",
-                      style: TextStyle(fontSize: 31, color: Colors.white),
+                      "Lista de Usinas Cadastradas",
+                      style: TextStyle(fontSize: 27, color: Colors.white),
                     ),
                   ),
                 )),
