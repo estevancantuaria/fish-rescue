@@ -1,19 +1,23 @@
+import 'package:fish_rescue_app/models/usuario.dart';
+import 'package:fish_rescue_app/modules/login/login_page.dart';
+import 'package:fish_rescue_app/utils/nav.dart';
 import 'package:flutter/material.dart';
 
 class DrawerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    Future<Usuario> future = Usuario.get();
+
     return SafeArea(
       child: Drawer(
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text("Estevan Augusto"),
-              accountEmail: Text("estevancantuaria23@gmail.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqP85ZnOcRSCX3nlYdkCvSxhSuZs0bLt1He8EvGr5ne8c7mTqW"),
-              ),
+            FutureBuilder<Usuario>(
+              future: future, builder: (context,snapshot){
+                Usuario user = snapshot.data;
+                return user != null ? _header(user) : Container();
+              },
             ),
             ListTile(
               leading: Icon(Icons.label_important),
@@ -40,13 +44,24 @@ class DrawerList extends StatelessWidget {
               title: Text("Logout"),
               trailing: Icon(Icons.arrow_forward),
               onTap: () {
-                print("Item 1");
+                Usuario.clear();
                 Navigator.pop(context);
+                push(context,LoginPage(),replace:true);
               },
             )
           ],
         ),
       ),
     );
+  }
+
+  UserAccountsDrawerHeader _header(user) {
+    return UserAccountsDrawerHeader(
+            accountName: Text(user.nome),
+            accountEmail: Text(user.email),
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: NetworkImage(user.urlFoto),
+            ),
+          );
   }
 }
