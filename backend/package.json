@@ -1,0 +1,35 @@
+{
+  "name": "mp18-cadastro-de-servicos",
+  "version": "1.0.0",
+  "description": "Aplicação Web de cadastro e controle de ordens de serviço com back-end em NodeJS e front-end em ReactJS.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estevancantuaria/mp18-cadastro-de-servicos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/estevancantuaria/mp18-cadastro-de-servicos/issues"
+  },
+  "homepage": "https://github.com/estevancantuaria/mp18-cadastro-de-servicos#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "sequelize-cli": "^5.5.1"
+  }
+}

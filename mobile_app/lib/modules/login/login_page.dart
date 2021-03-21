@@ -111,12 +111,12 @@ class _LoginPageState extends State<LoginPage> {
     if (!formOk) {
       return;
     }
-    String login = _tLogin.text;
+    String email = _tLogin.text;
     String senha = _tSenha.text;
 
-    print("Login: $login, Senha: $senha");
+    print("Login: $email, Senha: $senha");
 
-    ApiResponse response = await _bloc.login(login,senha);
+    ApiResponse response = await _bloc.login(email,senha);
     if(response.ok){
       Usuario user = response.result;
       print(">>>$user");
@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String _validateEmail(String text) {
     if (text.isEmpty) {
-      return "Digite o texto";
+      return "Digite o email";
     }
     return null;
   }

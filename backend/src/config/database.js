@@ -1,0 +1,11 @@
+module.exports={
+    dialect:'postgres',
+    host:'localhost',
+    username:'postgres',
+    password:'maikely13',
+    database:'fish_rescue',
+    define:{
+        timestamps:true,
+        underscored:true
+    }
+}

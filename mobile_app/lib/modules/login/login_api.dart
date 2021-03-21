@@ -5,13 +5,13 @@ import 'package:fish_rescue_app/utils/api_response.dart';
 import 'package:http/http.dart' as http;
 
 class LoginApi {
-  static Future<ApiResponse<Usuario>> login(String login, String senha) async {
+  static Future<ApiResponse<Usuario>> login(String email, String senha) async {
     try {
-      var url = 'https://carros-springboot.herokuapp.com/api/v2/login';
+      var url = 'http://10.0.2.2:3333/auth/';
 
       Map<String, String> headers = {"Content-Type": "application/json"};
 
-      Map params = {"username": login, "password": senha};
+      Map params = {"email": email, "password": senha};
 
       String s = json.encode(params);
 

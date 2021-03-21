@@ -11,10 +11,10 @@ class LoginBloc{
 
   get stream => _streamController.stream;
 
-  Future<ApiResponse<Usuario>> login(String login, String senha) async {
+  Future<ApiResponse<Usuario>> login(String email, String senha) async {
     _streamController.add(true);
 
-    ApiResponse response = await LoginApi.login(login, senha);
+    ApiResponse response = await LoginApi.login(email, senha);
 
     _streamController.add(false);
 

@@ -1,3 +1,4 @@
+import 'package:fish_rescue_app/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 
 class StepperDemo extends StatefulWidget {
@@ -8,7 +9,11 @@ class StepperDemo extends StatefulWidget {
 class _StepperDemoState extends State<StepperDemo> {
   int _currentStep = 0;
   StepperType stepperType = StepperType.vertical;
-  
+    final _tLogin = TextEditingController();
+
+  final _tSenha = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +26,7 @@ class _StepperDemoState extends State<StepperDemo> {
           ),
         ),
         body:  Form(
+          key: _formKey,
                   child: Container(
             child: Column(
               children: [
@@ -30,7 +36,7 @@ class _StepperDemoState extends State<StepperDemo> {
                     physics: ScrollPhysics(),
                     currentStep: _currentStep,
                     onStepTapped: (step) => tapped(step),
-                    onStepContinue:  continued,
+                    onStepContinue:  _currentStep==2?null:continued,
                     onStepCancel: cancel,
                     steps: <Step>[
                        Step(
@@ -39,21 +45,11 @@ class _StepperDemoState extends State<StepperDemo> {
                           children: <Widget>[
                             TextFormField(
                               decoration: InputDecoration(labelText: 'Email Address'),
+                              controller: _tLogin,
                             ),
                             TextFormField(
                               decoration: InputDecoration(labelText: 'Password'),
-                            ),
-                             TextFormField(
-                              decoration: InputDecoration(labelText: 'Email Address'),
-                            ),
-                            TextFormField(
-                              decoration: InputDecoration(labelText: 'Password'),
-                            ),
-                             TextFormField(
-                              decoration: InputDecoration(labelText: 'Email Address'),
-                            ),
-                            TextFormField(
-                              decoration: InputDecoration(labelText: 'Password'),
+                              controller: _tSenha,
                             ),
                           ],
                         ),
@@ -67,9 +63,6 @@ class _StepperDemoState extends State<StepperDemo> {
                           children: <Widget>[
                             TextFormField(
                               decoration: InputDecoration(labelText: 'Home Address'),
-                            ),
-                            TextFormField(
-                              decoration: InputDecoration(labelText: 'Postcode'),
                             ),
                           ],
                         ),
@@ -93,12 +86,20 @@ class _StepperDemoState extends State<StepperDemo> {
                     ],
                   ),
                 ),
+               _currentStep==2? AppButton("Salvar", onPressed: _onClick,) : Text("")
               ],
             ),
           ),
         ),
         
     );
+  }
+
+  _onClick(){
+        String login = _tLogin.text;
+    String senha = _tSenha.text;
+
+    print("Login: $login, Senha: $senha");
   }
 
   tapped(int step){
