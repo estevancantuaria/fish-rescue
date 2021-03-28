@@ -45,6 +45,7 @@ class Usuario {
     if(json.isEmpty){
       return null;
     }
+    print(json);
     Map map = convert.json.decode(json);
     Usuario user = Usuario.fromJson(map);
     return user;

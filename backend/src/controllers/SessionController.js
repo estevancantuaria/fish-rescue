@@ -33,7 +33,8 @@ module.exports = {
         return res.json({
             token: jwt.sign({id}, process.env.JWTSECRET),
             email:user.email,
-            name:user.name
+            name:user.name,
+            id:user.id
         })
     }
 }
